@@ -1,0 +1,458 @@
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+}
+
+/* Header and Navbar */
+header {
+    background-color: #3498db; /* Same background color as sidebar */
+    padding: 10px 20px;
+    box-sizing: border-box;
+    left: 200px;      /* Offset from the left for the sidebar */
+    width: calc(100% - 200px);  /* Adjust width to fill the remaining space */ /* Ensure the navbar stretches across the entire page */
+    position: fixed;
+    top: 0; /* Place at the top of the page */
+    z-index: 1000; /* Ensure the navbar is on top of the sidebar */
+}
+
+.navbar {
+    display: flex;  /* Use flexbox for the navbar */
+    align-items: center;  /* Center items vertically */
+    justify-content: space-between;  /* Space between logo and menu items */
+    padding: 5px 10px;  /* Add some padding */
+    margin-left: 10px; /* Add margin to the left of the navbar */
+}
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+   /* justify-content:start;*/
+   width: 100%;  
+    justify-content: space-between;  /* Space between logo and nav items */
+}
+
+.navlogo {
+    font-weight: bold;  /* Style for the logo */
+    color: #fff;  /* Example color for the logo */
+    margin-right: auto;  /* Push menu items to the right */
+}
+.navbar ul li {
+   /* margin-right: 20px;*/
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.navbar ul li a:hover {
+    background-color: #2980b9;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-sizing: border-box;
+    border-right: 1px solid #ccc;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+/* Logo styling inside sidebar */
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #2980b9; /* Slightly darker blue on hover */
+}
+.content {
+    padding: 20px;
+    flex-grow: 1;
+    margin-left: 220px; /* Adjust for sidebar width */
+    margin-top: 80px; /* Add margin for the fixed header */
+}
+     h2 {
+        font-size: 1.5em;
+        position: relative;
+        text-align: left;
+    }
+    
+    h2::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 5px;
+        background: #3498db;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+    
+    h2:hover::after {
+        transform: scaleX(1); /* Animate underline on hover */
+    }
+    
+    #intro-text {
+        font-size: 1.1em; /* Slightly larger than normal text */
+        color: #555; /* Soft gray text color */
+        line-height: 1.6; /* Space out the lines for better readability */
+        text-align: justify; /* Align text to both left and right edges */
+        margin: 20px 0; /* Add space above and below the paragraph */
+        background-color: #f9f9f9; /* Light background for subtle emphasis */
+        padding: 15px; /* Add padding around the text */
+        border-left: 5px solid #3498db; /* Left border for a clean accent */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        border-radius: 4px; /* Slightly rounded corners */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
+    }
+    
+    /* Add hover effect for paragraph */
+    #intro-text:hover {
+        transform: scale(1.02); /* Slight zoom on hover */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+    }
+    /* Initially hide the paragraph */
+    .hidden {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    
+    /* Fade-in effect */
+    .show {
+        opacity: 1;
+    }
+    
+
+textarea {
+    width: 100%;
+    height: 100px;
+}
+
+input[type="number"], input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+ /* Loading spinner inside the button */
+ button.loading {
+    position: relative;
+    padding-right: 40px;
+    color: transparent; /* Hide the text while loading */
+    line-height: 40px; /* Adjust based on your button height */
+    height: 40px; /* Set a specific height for the button */
+}
+
+button.loading::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 20%;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    /*transform: translateY(-50%);*/
+    transform: translate(-50%, -50%);
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+#textResult,#accountResult, #hashtagResult, #trendsResult {
+    margin-top: 15px;
+    border: none; /* Initially no border */
+    padding: 10px;
+    display: none; /* Hide element until it contains content */
+}
+ 
+
+.charts-section, .wordcloud-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.charts-section img, .wordcloud-section img {
+    width: 400px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.charts-section img:hover, .wordcloud-section img:hover {
+    transform: scale(1.05);
+}
+
+.negative-sentiment {
+    color: red; /* Red for negative */
+    font-weight: bold; /* Optional: make it bold */
+}
+
+.neutral-sentiment {
+    color: orange; /* Orange for neutral */
+    font-weight: bold; /* Optional: make it bold */
+}
+
+.positive-sentiment {
+    color: green; /* Green for positive */
+    font-weight: bold; /* Optional: make it bold */
+}
+.auth-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.auth-buttons .btn {
+    display: inline-block;
+    margin: 5px 0;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.auth-buttons .btn:hover {
+    background-color: #0056b3;
+}
+
+.auth-buttons .logout-btn {
+    background-color: #dc3545;
+}
+
+.auth-buttons .logout-btn:hover {
+    background-color: #b21f2d;
+}
+/* Login and Register Pages */
+#login-page, #register-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fafafa;
+}
+
+/* Login/Register Container */
+.login-container, .register-container {
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 300px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+    .login-container, .register-container {
+        width: 90%;
+    }
+}
+.flash-messages {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .flash-messages li {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .flash-messages li.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .flash-messages li.error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  /*dashboard*/
+  .dascontent h3 {
+    background: linear-gradient(to right, blue, purple);
+    background-clip: text; /* Standard version */
+    -webkit-background-clip: text; /* WebKit version for browsers like Chrome and Safari */
+    color: transparent;
+    font-size: 2em; /* You can adjust the size as needed */
+    font-weight: bold;
+}
+
+
+/* Chart container styling */
+/* Full chart container to align with sidebar */
+.full-chart-container {
+    margin-left: 240px; /* Align charts to not go under the sidebar */
+    margin-top: 20px;
+    margin-right: 5px;
+    display: grid; /* Use Grid layout for better control */
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 30px; /* Space between charts (30px) */
+}
+
+/* Individual chart container */
+.chart-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Images inside charts */
+.chart-container img {
+    display: block;
+    max-width: 100%; /* Ensures the graph doesn't overflow */
+    height: auto;
+    margin: 10px 0; /* 20-30px spacing between images */
+}
+
+/* Title for chart sections */
+.chart-container h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+/* Optional: Error message styling */
+.chart-container p {
+    text-align: center;
+    font-size: 14px;
+    color: red;
+}
+
+
+
+#accountResult table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: 0; /* No additional margin needed here */
+}
+
+#accountResult table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#accountResult table td:nth-child(2) {
+    text-align: center;
+    font-weight: bold;
+}
+
+.visualization-img {
+    display: block;
+    margin: 10px auto;
+    width: 50%; /* Adjust as needed */
+}
+
+.charts-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.chart-img {
+    width: 30%; /* Ensure all charts are of equal size */
+    height: auto;
+}
+
+/* sidespace styling */
+#sidespace {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100vh; /* Full viewport height */
+    background-color:#f4f4f4; /* Gray color */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add slight shadow for a clean look */
+    z-index: 1000; /* Ensure it stays on top */
+}

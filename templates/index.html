@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Twitter Sentiment Analysis</title>
+</head>
+<body>
+    <!-- Header with navbar -->
+ <header>
+    <nav class="navbar">
+        <ul>
+            <li class="navlogo"><bold>X Sentiment Analyzer</bold></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('how_it_works') }}">How It Works</a></li>
+                <li><a href="{{ url_for('about_us') }}">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+ 
+    <div class="sidebar">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" width="150px">
+    </div>
+    <h2>Menu</h2>
+    <ul>
+        <!-- Show Dashboard button only if the user is logged in -->
+        {% if session.get('user_id') %}
+            <li><a href="/dashboard">Dashboard</a></li>
+        {% endif %}
+        <li><a href="#textAnalysis">Text Analysis</a></li>
+        <li><a href="#hashtagAnalysis">Hashtag Analysis</a></li>
+        
+        <li><a href="#trendsAnalysis">Trends Analysis</a></li>
+    </ul>
+
+    <!-- Login/Logout Buttons -->
+    <div class="auth-buttons">
+        {% if session.get('user_id') %}
+            <a href="/logout" class="btn logout-btn">Logout</a>
+        {% else %}
+            <a href="/auth/login" class="btn login-btn">Login</a>
+            <a href="/auth/register" class="btn register-btn">Register</a>
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="content">
+    <h1 id="headline">Welcome to Twitter Sentiment Analysis!</h1>
+    <p id="intro-text" class="hidden">Welcome to our Twitter Sentiment Analysis platform, where we transform raw tweet data into meaningful insights. In today’s fast-paced digital world, understanding public sentiment is crucial for brands, researchers, and enthusiasts alike. Our tool allows you to analyze the feelings expressed in tweets related to various topics, hashtags, and accounts.</p>
+    
+     
+        <div id="textAnalysis">
+            <h2>Text Analysis</h2>
+            <textarea id="textInput" placeholder="Enter text here..."></textarea>
+            <button onclick="analyzeText()">Analyze</button>
+            <div id="textResult"></div>
+        </div>
+        
+
+        <div id="hashtagAnalysis">
+            <h2>Hashtag Analysis</h2>
+            <input type="text" id="hashtag" placeholder="Enter Hashtag (e.g., #AI, #python)" required>
+            <input type="number" id="hashtagCount" placeholder="Number of Tweets" value="5" min="1">
+            <button onclick="analyzeHashtag()">Analyze</button>
+            <div id="hashtagResult"></div>
+            
+            <!-- Add section to display visualizations -->
+            <div class="charts-section" style="display: none;"> <!-- Initially hidden -->
+                <h3>Hashtag Sentiment Distribution</h3>
+                <img id="hashtagPieChart" src="{{ url_for('static', filename='hashtag_pie_chart.png') }}" alt="Pie Chart" />
+                <img id="hashtagBarChart" src="{{ url_for('static', filename='hashtag_bar_chart.png') }}" alt="Bar Chart" />
+            </div>
+            
+            <div class="wordcloud-section" style="display: none;"> <!-- Initially hidden -->
+                <h3>Word Cloud for Hashtag Tweets</h3>
+                <img id="hashtagWordCloud" src="{{ url_for('static', filename='hashtag_wordcloud.png') }}" alt="Word Cloud" />
+            </div>
+        </div>
+           
+<!-- Trends Analysis Section -->
+<section id="trendsAnalysis">
+    <h2>Trends Analysis</h2>
+    <div>
+        <input type="text" id="country" placeholder="Enter Country" required>
+        <input type="number" id="trendsCount" placeholder="Enter number of trends" min="1" required />
+        <button onclick="fetchTrends()">Fetch Trends</button>
+    </div>
+    <div id="trendsResult">
+        <!-- Results and visualizations will be dynamically displayed here -->
+    </div>
+    <!-- Display Graphs -->
+    <img id="trendsBarChart" style="display:none;" />
+    <img id="trendsLineChart" style="display:none;" />
+</section>
+
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='trends.js') }}"></script> <!-- Added the separate JS file here -->
+</body>
+</html>

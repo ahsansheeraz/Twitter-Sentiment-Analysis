@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>How It Works | X Sentiment Analyzer</title>
+</head>
+<body>
+    <!-- Header with navbar -->
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li class="navlogo"><bold>X Sentiment Analyzer</bold></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('how_it_works') }}">How It Works</a></li>
+                <li><a href="{{ url_for('about_us') }}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Add a sidebar container -->
+<div id="sidespace"></div>
+    
+    <div class="content">
+        <h1>How It Works</h1>
+        <p>Welcome to the X Sentiment Analyzer! Here’s how to use the website:</p>
+        <!-- Add a new section for the hashtag analysis information -->
+<section id="hashtag-analysis">
+    <h2>Hashtag Analysis</h2>
+    <p>
+        Enter the hashtag in the hashtag field and specify the number of tweets you want to fetch in the second field. Click the "Analyze" button to submit your request. Within seconds, the tweets along with their sentiment will be displayed, accompanied by visualizations.
+    </p>
+
+    <!-- Add images for hashtag function and visualizations -->
+    <div class="visualizations">
+        <img src="static/img/hashtag-function.png" alt="Hashtag Function" class="visualization-img">
+        <h3>Visualization Results</h3>
+        <div class="charts-container">
+            <img src="static/img/bar-graph.png" alt="Bar Graph" class="chart-img">
+            <img src="static/img/pie-chart.png" alt="Pie Chart" class="chart-img">
+            <img src="static/img/wordcloud.png" alt="Word Cloud" class="chart-img">
+        </div>
+    </div>
+</section>
+
+        
+        <!-- Video -->
+        <div class="how-to-video">
+             
+                <source src="{{ url_for('static', filename='how_to_use_video.mp4') }}" type="video/mp4">
+                
+            </video>
+        </div>
+
+        <p>Watch the video for a detailed guide on how to use the tool effectively. Once you understand the basic steps, you can start analyzing tweets for sentiment!</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

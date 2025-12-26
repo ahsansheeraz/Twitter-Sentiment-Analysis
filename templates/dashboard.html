@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" width="150px">
+        </div>
+        <div class="dascontent">
+            <h3>Welcome, {{ session['username'] }}!</h3>
+              
+        </div>
+        <h2>Menu</h2>
+        <ul>
+            <!-- Show Dashboard button only if the user is logged in -->
+            {% if session.get('user_id') %}
+                <li><a href="/dashboard">Dashboard</a></li>
+            {% endif %}
+            <li><a href="/#textAnalysis">Text Analysis</a></li>
+            <li><a href="/#hashtagAnalysis">Hashtag Analysis</a></li>
+            <li><a href="/#accountAnalysis">Account Analysis</a></li>
+            <li><a href="/#trendsAnalysis">Trends Analysis</a></li>
+        </ul>
+    
+        <!-- Login/Logout Buttons -->
+        <div class="auth-buttons">
+            {% if session.get('user_id') %}
+                <a href="/logout" class="btn logout-btn">Logout</a>
+            {% else %}
+                <a href="/auth/login" class="btn login-btn">Login</a>
+                <a href="/auth/register" class="btn register-btn">Register</a>
+            {% endif %}
+        </div>
+    </div>
+    
+   
+    
+    <div class="full-chart-container">
+    <div class="chart-container">
+        <h3>Dataset Visualization</h3>
+        <!-- Sentiment Distribution Chart -->
+        <img src="{{ url_for('static', filename='charts/dataset_sentiment_distribution.png') }}" 
+             alt="Dataset Sentiment Distribution Chart" 
+             onerror="this.onerror=null; this.style.display='none'; document.getElementById('dataset-error').style.display='block';" />
+        <!-- Sentiment Pie Chart -->
+        <img src="{{ url_for('static', filename='charts/dataset_sentiment_pie.png') }}" 
+             alt="Dataset Sentiment Pie Chart" 
+             onerror="this.onerror=null; this.style.display='none'; document.getElementById('dataset-error').style.display='block';" />
+        <!-- Fallback Message -->
+        <p id="dataset-error" style="display:none; color:red;">Dataset charts are not available at the moment.</p>
+    </div>
+    
+    <div class="chart-container">
+        <h3>Model Insights</h3>
+        <img src="{{ url_for('static', filename='charts/model_performance.png') }}" 
+             alt="Model Performance Chart" 
+             onerror="this.onerror=null; this.style.display='none'; document.getElementById('model-error').style.display='block';" />
+        <p id="model-error" style="display:none; color:red;">Model insights chart is not available at the moment.</p>
+    </div>
+    
+    <div class="chart-container">
+        <h3>User Activity</h3>
+        <img src="{{ url_for('static', filename='charts/user_sentiment_analysis.png') }}" 
+             alt="User Sentiment Analysis Chart" 
+             onerror="this.onerror=null; this.style.display='none'; document.getElementById('user-error').style.display='block';" />
+        <p id="user-error" style="display:none; color:red;">User activity chart is not available at the moment.</p>
+    </div>
+</div>
+    

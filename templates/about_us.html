@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>About Us - Twitter Sentiment Analysis</title>
+</head>
+<body>
+    <!-- Header with navbar -->
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li class="navlogo"><bold>X Sentiment Analyzer</bold></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('how_it_works') }}">How It Works</a></li>
+                <li><a href="{{ url_for('about_us') }}">About Us</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Add a sidebar container -->
+<div id="sidespace"></div>
+    <div class="content">
+        <h1>About Us</h1>
+        <p>Welcome to <strong>X Sentiment Analyzer</strong>, a cutting-edge tool designed to analyze sentiment on Twitter and provide users with insightful data on public opinions, trends, and emotions in real-time.</p>
+
+        <h3>Our Mission</h3>
+        <p>At X Sentiment Analyzer, our mission is to empower users with the ability to analyze sentiment across Twitter, enabling them to make informed decisions based on social media trends. Whether you're a business, researcher, or social media enthusiast, our tool helps you understand the emotional tone behind tweets, hashtags, and user accounts.</p>
+
+        <h3>What We Do</h3>
+        <p>We specialize in sentiment analysis, leveraging state-of-the-art natural language processing (NLP) techniques to classify tweets as positive, negative, or neutral. Our tool also allows you to explore emotions like happiness, anger, sadness, and surprise. With our intuitive interface, users can analyze individual tweets, specific Twitter accounts, or trending hashtags, giving them a comprehensive view of online sentiment.</p>
+
+        <h3>Our Story</h3>
+        <p>This project was developed as part of a final-year academic project by <strong>Ahsan Sheeraz</strong>, a computer science student. With a passion for data science and machine learning, Ahsan set out to create a simple yet powerful tool that would allow users to better understand public opinion through sentiment analysis. Through extensive research and coding, X Sentiment Analyzer was born—a platform that makes complex data accessible to everyone.</p>
+
+        <h3>Technology We Use</h3>
+        <p>We utilize the latest technologies in machine learning and natural language processing to deliver accurate sentiment results. Our platform is built using:</p>
+        <ul>
+            <li><strong>Python</strong> for backend development</li>
+            <li><strong>Flask</strong> for building the web application</li>
+            <li><strong>VADER</strong> for sentiment analysis</li>
+            <li><strong>snScraper</strong> for fetching Twitter data</li>
+            <li><strong>Seaborn</strong> and <strong>Matplotlib</strong> for data visualization</li>
+        </ul>
+
+        <h3>Our Team</h3>
+        <p>Our team consists of passionate students and professionals who are committed to advancing the field of sentiment analysis and making it accessible to everyone.</p>
+        <ul>
+            <li><strong>Ahsan Sheeraz</strong> - Developer and Project Lead</li>
+            <li><strong>Ehtisham</strong> - Team Member, Assistant Developer</li>
+        </ul>
+
+        <h3>Why Choose Us?</h3>
+        <p>X Sentiment Analyzer is designed to be fast, accurate, and easy to use. We focus on delivering high-quality sentiment analysis results with minimal effort on your part. Whether you're analyzing a tweet for research, tracking sentiment for marketing purposes, or simply curious about online opinions, our tool provides the insights you need.</p>
+
+        <h3>Get Involved</h3>
+        <p>We are constantly improving X Sentiment Analyzer, and we welcome feedback from users. If you have suggestions for new features, or if you'd like to learn more about how sentiment analysis works, feel free to reach out to us!</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
